@@ -1,0 +1,677 @@
+Program.Sub.ScreenSU.Start
+gui.fSales..create
+gui.fSales..caption("Sales by Period ")
+gui.fSales..size(9630,5835)
+gui.fSales..position(0,0)
+gui.fSales..event(unload,fsales_unload)
+gui.fSales..alwaysontop(False)
+gui.fSales..fontname("Arial")
+gui.fSales..fontsize(8)
+gui.fSales..forecolor(0)
+gui.fSales..fontstyle(,,,,)
+gui.fSales..BackColor(-2147483633)
+gui.fSales..controlbox(True)
+gui.fSales..maxbutton(False)
+gui.fSales..minbutton(True)
+gui.fSales..mousepointer(0)
+gui.fSales..moveable(True)
+gui.fSales..sizeable(False)
+gui.fSales..ShowInTaskBar(True)
+gui.fSales..titlebar(True)
+gui.fSales.lblDate.create(label,"Select Date Range",True,1935,255,1,110,110,True,0,Arial,8,-2147483633,0)
+gui.fSales.dtpStart.create(datepicker)
+gui.fSales.dtpStart.visible(True)
+gui.fSales.dtpStart.size(1500,285)
+gui.fSales.dtpStart.zorder(0)
+gui.fSales.dtpStart.position(95,320)
+gui.fSales.dtpStart.enabled(True)
+gui.fSales.dtpStart.checkbox(False)
+gui.fSales.dtpStop.create(datepicker)
+gui.fSales.dtpStop.visible(True)
+gui.fSales.dtpStop.size(1500,285)
+gui.fSales.dtpStop.zorder(0)
+gui.fSales.dtpStop.position(1770,320)
+gui.fSales.dtpStop.enabled(True)
+gui.fSales.dtpStop.checkbox(False)
+gui.fSales.lblPL.create(label,"Select Product Lines",True,1605,255,1,110,1280,True,0,Arial,8,-2147483633,0)
+gui.fSales.lvwPL.create(listview)
+gui.fSales.lvwPL.view(3)
+gui.fSales.lvwPL.addlistviewcolumn("PL",750,0)
+gui.fSales.lvwPL.addlistviewcolumn("Description",2000,0)
+gui.fSales.lvwPL.visible(True)
+gui.fSales.lvwPL.size(3030,3030)
+gui.fSales.lvwPL.zorder(0)
+gui.fSales.lvwPL.position(70,1495)
+gui.fSales.lvwPL.enabled(True)
+gui.fSales.lvwPL.fontname("Arial")
+gui.fSales.lvwPL.fontsize(8)
+gui.fSales.lblSR.create(label,"Select Salespersons",True,1935,255,1,3275,1280,True,0,Arial,8,-2147483633,0)
+gui.fSales.lvwSP.create(listview)
+gui.fSales.lvwSP.view(3)
+gui.fSales.lvwSP.addlistviewcolumn("SP",750,0)
+gui.fSales.lvwSP.addlistviewcolumn("Name",2000,0)
+gui.fSales.lvwSP.visible(True)
+gui.fSales.lvwSP.size(3030,3030)
+gui.fSales.lvwSP.zorder(0)
+gui.fSales.lvwSP.position(3250,1495)
+gui.fSales.lvwSP.enabled(True)
+gui.fSales.lvwSP.fontname("Arial")
+gui.fSales.lvwSP.fontsize(8)
+gui.fSales.lblSC.create(label,"Select Sort Code",True,1935,255,1,6400,1280,True,0,Arial,8,-2147483633,0)
+gui.fSales.lvwSC.create(listview)
+gui.fSales.lvwSC.view(3)
+gui.fSales.lvwSC.addlistviewcolumn("Sort Code",2750,0)
+gui.fSales.lvwSC.visible(True)
+gui.fSales.lvwSC.size(3030,3030)
+gui.fSales.lvwSC.zorder(0)
+gui.fSales.lvwSC.position(6390,1495)
+gui.fSales.lvwSC.enabled(True)
+gui.fSales.lvwSC.fontname("Arial")
+gui.fSales.lvwSC.fontsize(8)
+gui.fSales.cmdOk.create(button)
+gui.fSales.cmdOk.caption("OK")
+gui.fSales.cmdOk.visible(True)
+gui.fSales.cmdOk.size(855,375)
+gui.fSales.cmdOk.zorder(0)
+gui.fSales.cmdOk.position(95,4920)
+gui.fSales.cmdOk.enabled(True)
+gui.fSales.cmdOk.fontname("Arial")
+gui.fSales.cmdOk.fontsize(8)
+gui.fSales.cmdOk.event(click,cmdok_click)
+gui.fSales.chkDetail.create(checkbox)
+gui.fSales.chkDetail.caption("Show Detail")
+gui.fSales.chkDetail.visible(True)
+gui.fSales.chkDetail.size(1935,255)
+gui.fSales.chkDetail.zorder(0)
+gui.fSales.chkDetail.position(95,4625)
+gui.fSales.chkDetail.enabled(True)
+gui.fSales.chkDetail.alignment(0)
+gui.fSales.chkDetail.fontname("Arial")
+gui.fSales.chkDetail.fontsize(8)
+gui.fSales.optPrior.create(option)
+gui.fSales.optPrior.caption("Show Prior Year For Period")
+gui.fSales.optPrior.visible(True)
+gui.fSales.optPrior.size(3060,255)
+gui.fSales.optPrior.zorder(0)
+gui.fSales.optPrior.position(95,695)
+gui.fSales.optPrior.enabled(True)
+gui.fSales.optPrior.alignment(0)
+gui.fSales.optPrior.fontname("Arial")
+gui.fSales.optPrior.fontsize(8)
+gui.fSales.optPrior2.create(option)
+gui.fSales.optPrior2.caption("Show Last 2 Years For Period")
+gui.fSales.optPrior2.visible(True)
+gui.fSales.optPrior2.size(2820,255)
+gui.fSales.optPrior2.zorder(0)
+gui.fSales.optPrior2.position(95,980)
+gui.fSales.optPrior2.enabled(True)
+gui.fSales.optPrior2.alignment(0)
+gui.fSales.optPrior2.fontname("Arial")
+gui.fSales.optPrior2.fontsize(8)
+gui.fSales.dtpStart.tabstop(True)
+gui.fSales.dtpStart.tabindex(1)
+gui.fSales.dtpStop.tabstop(True)
+gui.fSales.dtpStop.tabindex(2)
+gui.fSales.lvwPL.tabstop(True)
+gui.fSales.lvwPL.tabindex(5)
+gui.fSales.lvwSP.tabstop(True)
+gui.fSales.lvwSP.tabindex(6)
+gui.fSales.lvwSC.tabstop(True)
+gui.fSales.lvwSC.tabindex(7)
+gui.fSales.chkDetail.tabstop(True)
+gui.fSales.chkDetail.tabindex(8)
+gui.fSales.cmdOk.tabstop(True)
+gui.fSales.cmdOk.tabindex(9)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.CurrP.Define("Invoice",String,"INVOICE")
+Variable.UDT.CurrP.Define("Order",String,"ORDER_NO")
+Variable.UDT.CurrP.Define("Suffix",String,"ORDER_SUFFIX")
+Variable.UDT.CurrP.Define("Line",String,"ORDER_LINE")
+Variable.UDT.CurrP.Define("Cust",String,"CUSTOMER")
+Variable.UDT.CurrP.Define("CustName",String,"NAME_CUST_SHIP")
+Variable.UDT.CurrP.Define("InvDate",Date,"DATE_INVOICE","YYYYMMDD")
+Variable.UDT.CurrP.Define("SP",String,"SALESPERSON")
+Variable.UDT.CurrP.Define("Part",String,"PART")
+Variable.UDT.CurrP.Define("Desc",String,"DESCRIPTION")
+Variable.UDT.CurrP.Define("PL",String,"PRODUCT_LINE")
+Variable.UDT.CurrP.Define("Ext",Float,"EXTENSION")
+Variable.UDT.CurrP.Define("Cost",Float,"COST")
+Variable.UDT.CurrP.Define("SC",String)
+Variable.uGlobal.uCurrP.Declare("CurrP")
+Variable.UDT.PriorP.Define("Invoice",String,"INVOICE")
+Variable.UDT.PriorP.Define("Order",String,"ORDER_NO")
+Variable.UDT.PriorP.Define("Suffix",String,"ORDER_SUFFIX")
+Variable.UDT.PriorP.Define("Line",String,"ORDER_LINE")
+Variable.UDT.PriorP.Define("Cust",String,"CUSTOMER")
+Variable.UDT.PriorP.Define("CustName",String,"NAME_CUST_SHIP")
+Variable.UDT.PriorP.Define("InvDate",Date,"DATE_INVOICE","YYYYMMDD")
+Variable.UDT.PriorP.Define("SP",String,"SALESPERSON")
+Variable.UDT.PriorP.Define("Part",String,"PART")
+Variable.UDT.PriorP.Define("Desc",String,"DESCRIPTION")
+Variable.UDT.PriorP.Define("PL",String,"PRODUCT_LINE")
+Variable.UDT.PriorP.Define("Ext",Float,"EXTENSION")
+Variable.UDT.PriorP.Define("Cost",Float,"COST")
+Variable.UDT.PriorP.Define("SC",String)
+Variable.uGlobal.uPriorP.Declare("PriorP")
+Variable.UDT.Prior2P.Define("Invoice",String,"INVOICE")
+Variable.UDT.Prior2P.Define("Order",String,"ORDER_NO")
+Variable.UDT.Prior2P.Define("Suffix",String,"ORDER_SUFFIX")
+Variable.UDT.Prior2P.Define("Line",String,"ORDER_LINE")
+Variable.UDT.Prior2P.Define("Cust",String,"CUSTOMER")
+Variable.UDT.Prior2P.Define("CustName",String,"NAME_CUST_SHIP")
+Variable.UDT.Prior2P.Define("InvDate",Date,"DATE_INVOICE","YYYYMMDD")
+Variable.UDT.Prior2P.Define("SP",String,"SALESPERSON")
+Variable.UDT.Prior2P.Define("Part",String,"PART")
+Variable.UDT.Prior2P.Define("Desc",String,"DESCRIPTION")
+Variable.UDT.Prior2P.Define("PL",String,"PRODUCT_LINE")
+Variable.UDT.Prior2P.Define("Ext",Float,"EXTENSION")
+Variable.UDT.Prior2P.Define("Cost",Float,"COST")
+Variable.UDT.Prior2P.Define("SC",String)
+Variable.uGlobal.uPrior2P.Declare("Prior2P")
+Variable.UDT.Write.Define("Period",Long)
+Variable.UDT.Write.Define("Invoice",String,"INVOICE")
+Variable.UDT.Write.Define("Order",String,"ORDER_NO")
+Variable.UDT.Write.Define("Suffix",String,"ORDER_SUFFIX")
+Variable.UDT.Write.Define("Line",String,"ORDER_LINE")
+Variable.UDT.Write.Define("Cust",String,"CUSTOMER")
+Variable.UDT.Write.Define("CustName",String,"NAME_CUST_SHIP")
+Variable.UDT.Write.Define("InvDate",Date,"DATE_INVOICE","YYYYMMDD")
+Variable.UDT.Write.Define("SP",String,"SALESPERSON")
+Variable.UDT.Write.Define("Part",String,"PART")
+Variable.UDT.Write.Define("Desc",String,"DESCRIPTION")
+Variable.UDT.Write.Define("PL",String,"PRODUCT_LINE")
+Variable.UDT.Write.Define("Ext",Float,"EXTENSION")
+Variable.UDT.Write.Define("Cost",Float,"COST")
+Variable.UDT.Write.Define("SC",String)
+Variable.UDT.Write.Define("Trmnl",String)
+Variable.uGlobal.uWrite.Declare("Write")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by: MLA
+'Project Start Date: 1/30/2011
+'Notes:
+'  Polygaurd
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Listloadpl)
+F.Intrinsic.Control.CallSub(Listloadsp)
+F.Intrinsic.Control.CallSub(Listloadsc)
+Gui.fSales.optPrior.Value(1)
+Gui.fSales..Show
+
+Program.Sub.Main.End
+
+Program.Sub.ListLoadPL.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("ListLoadPL_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sSql.Set("Select PRODUCT_LINE, PRODUCT_LINE_DESC from V_PRODUCT_LINE order by PRODUCT_LINE")
+
+Gui.fSales.lvwPL.Checkboxes(True)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	Gui.fSales.lvwPL.AddListItem(V.ODBC.con!rst.FieldValTrim!PRODUCT_LINE,V.ODBC.con!rst.FieldValLTrim!PRODUCT_LINE)
+	Gui.fSales.lvwPL.SetListItemSubItemText(V.ODBC.con!rst.FieldValLTrim!PRODUCT_LINE,1,V.ODBC.con!rst.FieldValTrim!PRODUCT_LINE_DESC)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ListLoadPL_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.ListLoadPL.End
+
+Program.Sub.ListLoadSC.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("ListLoadSC_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sSql.Set("Select Distinct CODE_SORT from INVENTORY_MSTR order by CODE_SORT")
+
+Gui.fSales.lvwSC.Checkboxes(True)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.Control.If(V.ODBC.con!rst.FieldValTrim!CODE_SORT,<>,"")
+		Gui.fSales.lvwSC.AddListItem(V.ODBC.con!rst.FieldValTrim!CODE_SORT,V.ODBC.con!rst.FieldValTrim!CODE_SORT)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ListLoadSC_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.ListLoadSC.End
+
+Program.Sub.ListLoadSP.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("ListLoadSP_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sSql.Set("Select SALESPERSON_CODE, SALESPERSON from V_SALESPEOPLE order by SALESPERSON_CODE")
+
+Gui.fSales.lvwSP.Checkboxes(True)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	Gui.fSales.lvwSP.AddListItem(V.ODBC.con!rst.FieldValTrim!SALESPERSON_CODE,V.ODBC.con!rst.FieldValTrim!SALESPERSON_CODE)
+	Gui.fSales.lvwSP.SetListItemSubItemText(V.ODBC.con!rst.FieldValTrim!SALESPERSON_CODE,1,V.ODBC.con!rst.FieldValTrim!SALESPERSON)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ListLoadSP_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.ListLoadSP.End
+
+program.sub.fsales_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+program.sub.fsales_unload.end
+
+program.sub.cmdok_click.start
+V.Local.sError.Declare(String)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+V.Local.sChk.Declare(String)
+V.Local.sUDTName.Declare(String)
+V.Local.iPeriod.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("cmdOk_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.dStart.Set(V.Screen.fSales!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.fSales!dtpStop.Value)
+F.Intrinsic.Control.If(V.Local.dStart,>,V.Local.dStop)
+	F.Intrinsic.UI.Msgbox("Please select a valid date range","Date Error")
+	Gui.fSales.dtpStart.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.fSales.lvwPL.RetrieveCheckedListItems(V.Local.sChk)
+F.Intrinsic.Control.If(V.Local.sChk,=,"***NORETURN***")
+	F.Intrinsic.UI.Msgbox("Please select a Product Line(s)","PL Error")
+	Gui.fSales.lvwPL.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.fSales.lvwSP.RetrieveCheckedListItems(V.Local.sChk)
+F.Intrinsic.Control.If(V.Local.sChk,=,"***NORETURN***")
+	F.Intrinsic.UI.Msgbox("Please select a Salesperson(s)","SP Error")
+	Gui.fSales.lvwSP.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.fSales.lvwSC.RetrieveCheckedListItems(V.Local.sChk)
+F.Intrinsic.Control.If(V.Local.sChk,=,"***NORETURN***")
+	F.Intrinsic.UI.Msgbox("Please select a Sort Code(s)","SC Error")
+	Gui.fSales.lvwSC.SetFocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+Gui.fSales..Visible(0)
+
+F.Intrinsic.Control.CallSub(Currp)
+F.Intrinsic.Control.CallSub(Priorp)
+F.Intrinsic.Control.If(V.Screen.fSales!optPrior2.Value,=,1)
+	F.Intrinsic.Control.CallSub(Prior2p)
+F.Intrinsic.Control.EndIf
+
+V.uGlobal.uWrite.Redim(-1,-1)
+V.Local.sUDTName.Set("uCurrP")
+V.Local.iPeriod.Set(1)
+F.Intrinsic.Control.CallSub(Writeudt,"UDT",V.Local.sUDTName,"Period",V.Local.iPeriod)
+
+V.Local.sUDTName.Set("uPriorP")
+V.Local.iPeriod.Set(2)
+F.Intrinsic.Debug.Stop
+F.Intrinsic.Control.CallSub(Writeudt,"UDT",V.Local.sUDTName,"Period",V.Local.iPeriod)
+
+F.Intrinsic.Control.If(V.Screen.fSales!optPrior2.Value,=,1)
+	V.Local.sUDTName.Set("uPrior2P")
+	V.Local.iPeriod.Set(3)
+	F.Intrinsic.Control.CallSub(Writeudt,"UDT",V.Local.sUDTName,"Period",V.Local.iPeriod)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(Writerst)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdOk_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdok_click.end
+
+Program.Sub.CurrP.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+V.Local.sStart.Declare(String)
+V.Local.sStop.Declare(String)
+V.Local.i.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("CurrP_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.dStart.Set(V.Screen.fSales!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.fSales!dtpStop.Value)
+F.Intrinsic.String.Format(V.Local.dStart,"YYYYMMDD",V.Local.sStart)
+F.Intrinsic.String.Format(V.Local.dStop,"YYYYMMDD",V.Local.sStop)
+F.Intrinsic.String.Concat("Select INVOICE, ORDER_NO, ORDER_SUFFIX, ORDER_LINE, CUSTOMER, NAME_CUST_SHIP, DATE_INVOICE, SALESPERSON, PRODUCT_LINE, PART, DESCRIPTION, COST, EXTENSION from ORDER_HIST_LINE where DATE_INVOICE between '",V.Local.sStart,"' and '",V.Local.sStop,"'",V.Local.sSql)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No records found for selected date range","Current Period Error")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.CallSub(Fsales_unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.LoadUDTFromRecordset("con","rst","uGlobal.uCurrP","false")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uCurrP.LBound,V.uGlobal.uCurrP.UBound,1)
+		F.Intrinsic.String.Concat("Select CODE_SORT from V_INVENTORY_MSTR where PART = '",V.uGlobal.uCurrP(v.Local.i)!Part,"'",V.Local.sSql)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,<>,True)
+			V.uGlobal.uCurrP(V.Local.i)!SC.Set(V.ODBC.con!rst.FieldValTrim!CODE_SORT)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CurrP_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CurrP.End
+
+Program.Sub.PriorP.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+V.Local.sStart.Declare(String)
+V.Local.sStop.Declare(String)
+V.Local.i.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("PriorP_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.dStart.Set(V.Screen.fSales!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.fSales!dtpStop.Value)
+F.Intrinsic.Date.DateAdd("YYYY",-1,V.Local.dStart,V.Local.dStart)
+F.Intrinsic.Date.DateAdd("YYYY",-1,V.Local.dStop,V.Local.dStop)
+F.Intrinsic.String.Format(V.Local.dStart,"YYYYMMDD",V.Local.sStart)
+F.Intrinsic.String.Format(V.Local.dStop,"YYYYMMDD",V.Local.sStop)
+F.Intrinsic.String.Concat("Select INVOICE, ORDER_NO, ORDER_SUFFIX, ORDER_LINE, CUSTOMER, NAME_CUST_SHIP, DATE_INVOICE, SALESPERSON, PRODUCT_LINE, PART, DESCRIPTION, COST, EXTENSION from ORDER_HIST_LINE where DATE_INVOICE between '",V.Local.sStart,"' and '",V.Local.sStop,"'",V.Local.sSql)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No records found for selected date range","Prior Period Error")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.CallSub(Fsales_unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.LoadUDTFromRecordset("con","rst","uGlobal.uPriorP","false")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uPriorP.LBound,V.uGlobal.uPriorP.UBound,1)
+		F.Intrinsic.String.Concat("Select CODE_SORT from V_INVENTORY_MSTR where PART = '",V.uGlobal.uPriorP(v.Local.i)!Part,"'",V.Local.sSql)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,<>,True)
+			V.uGlobal.uPriorP(V.Local.i)!SC.Set(V.ODBC.con!rst.FieldValTrim!CODE_SORT)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PriorP_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.PriorP.End
+
+Program.Sub.Prior2P.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+V.Local.sStart.Declare(String)
+V.Local.sStop.Declare(String)
+V.Local.i.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("Prior2P_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.dStart.Set(V.Screen.fSales!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.fSales!dtpStop.Value)
+F.Intrinsic.Date.DateAdd("YYYY",-2,V.Local.dStart,V.Local.dStart)
+F.Intrinsic.Date.DateAdd("YYYY",-2,V.Local.dStop,V.Local.dStop)
+F.Intrinsic.String.Format(V.Local.dStart,"YYYYMMDD",V.Local.sStart)
+F.Intrinsic.String.Format(V.Local.dStop,"YYYYMMDD",V.Local.sStop)
+F.Intrinsic.String.Concat("Select INVOICE, ORDER_NO, ORDER_SUFFIX, ORDER_LINE, CUSTOMER, NAME_CUST_SHIP, DATE_INVOICE, SALESPERSON, PRODUCT_LINE, PART, DESCRIPTION, COST, EXTENSION from ORDER_HIST_LINE where DATE_INVOICE between '",V.Local.sStart,"' and '",V.Local.sStop,"'",V.Local.sSql)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No records found for selected date range","Prior 2 Years Period Error")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.CallSub(Fsales_unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.LoadUDTFromRecordset("con","rst","uGlobal.uPrio2rP","false")
+	F.ODBC.con!rst.Close
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uPrior2P.LBound,V.uGlobal.uPrior2P.UBound,1)
+		F.Intrinsic.String.Concat("Select CODE_SORT from V_INVENTORY_MSTR where PART = '",V.uGlobal.uPrior2P(v.Local.i)!Part,"'",V.Local.sSql)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,<>,True)
+			V.uGlobal.uPrior2P(V.Local.i)!SC.Set(V.ODBC.con!rst.FieldValTrim!CODE_SORT)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Prior2P_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Prior2P.End
+
+Program.Sub.WriteUDT.Start
+V.Local.sError.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.ia.Declare(Long)
+V.Local.ib.Declare(Long)
+V.Local.ic.Declare(Long)
+V.Local.iUB.Declare(Long)
+V.Local.sPL.Declare(String)
+V.Local.sSP.Declare(String)
+V.Local.sSC.Declare(String)
+V.Local.sSeek.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iRet.Declare(Long)
+
+F.Intrinsic.Control.SetErrorHandler("WriteUDT_Err")
+F.Intrinsic.Control.ClearErrors
+
+Gui.fSales.lvwPL.RetrieveCheckedListItems(V.Local.sPL)
+F.Intrinsic.String.Split(V.Local.sPL,"*!*",V.Local.sPL)
+Gui.fSales.lvwSP.RetrieveCheckedListItems(V.Local.sSP)
+F.Intrinsic.String.Split(V.Local.sSP,"*!*",V.Local.sSP)
+Gui.fSales.lvwSC.RetrieveCheckedListItems(V.Local.sSC)
+F.Intrinsic.String.Split(V.Local.sSC,"*!*",V.Local.sSC)
+
+F.Intrinsic.Control.For(V.Local.i,V.Local.sPL.LBound,V.Local.sPL.UBound,1)
+	F.Intrinsic.Control.For(V.Local.ia,V.Local.sSP.LBound,V.Local.sSP.UBound,1)
+		F.Intrinsic.Control.For(V.Local.ib,V.Local.sSC.LBound,V.Local.sSC.UBound,1)
+			F.Intrinsic.Variable.UDTMultiSeek(V.uGlobal.[V.Args.UDT]!PL,V.Local.sPL(V.Local.i),V.uGlobal.[V.Args.UDT]!SP,V.Local.sSP(V.Local.ia),V.uGlobal.[V.Args.UDT]!SC,V.Local.sSC(V.Local.ib),V.Local.sRet)
+			F.Intrinsic.Control.If(V.Local.sRet,<>,"")
+				F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+				F.Intrinsic.Control.For(V.Local.ic,V.Local.sRet.LBound,V.Local.sRet.UBound,1)
+					V.Local.iRet.Set(V.Local.sRet(v.Local.ic).Long)
+					F.Intrinsic.Control.If(V.uGlobal.uWrite.UBound,=,-1)
+						V.uGlobal.uWrite.Redim(0,0)
+						V.uGlobal.uWrite!Period.Set(V.Args.Period)
+						V.uGlobal.uWrite!Invoice.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Invoice)
+						V.uGlobal.uWrite!Order.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Order)
+						V.uGlobal.uWrite!Suffix.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Suffix)
+						V.uGlobal.uWrite!Line.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Line)
+						V.uGlobal.uWrite!Cust.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Cust)
+						V.uGlobal.uWrite!CustName.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!CustName)
+						V.uGlobal.uWrite!InvDate.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!InvDate)
+						V.uGlobal.uWrite!SP.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!SP)
+						V.uGlobal.uWrite!Part.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Part)
+						V.uGlobal.uWrite!Desc.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Desc)
+						V.uGlobal.uWrite!PL.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!PL)
+						V.uGlobal.uWrite!Ext.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Ext)
+						V.uGlobal.uWrite!Cost.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Cost)
+						V.uGlobal.uWrite!SC.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!SC)
+						V.uGlobal.uWrite!Trmnl.Set(V.Caller.Terminal)
+					F.Intrinsic.Control.Else
+						V.Local.iUB.Set(V.uGlobal.uWrite.UBound)
+						F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+						V.uGlobal.uWrite.RedimPreserve(0,V.Local.iUB)
+						V.uGlobal.uWrite(V.Local.iUB)!Period.Set(V.Args.Period)
+						V.uGlobal.uWrite(v.Local.iUB)!Invoice.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Invoice)
+						V.uGlobal.uWrite(v.Local.iUB)!Order.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Order)
+						V.uGlobal.uWrite(v.Local.iUB)!Suffix.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Suffix)
+						V.uGlobal.uWrite(v.Local.iUB)!Line.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Line)
+						V.uGlobal.uWrite(v.Local.iUB)!Cust.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Cust)
+						V.uGlobal.uWrite(v.Local.iUB)!CustName.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!CustName)
+						V.uGlobal.uWrite(v.Local.iUB)!InvDate.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!InvDate)
+						V.uGlobal.uWrite(v.Local.iUB)!SP.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!SP)
+						V.uGlobal.uWrite(v.Local.iUB)!Part.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Part)
+						V.uGlobal.uWrite(v.Local.iUB)!Desc.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Desc)
+						V.uGlobal.uWrite(v.Local.iUB)!PL.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!PL)
+						V.uGlobal.uWrite(v.Local.iUB)!Ext.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Ext)
+						V.uGlobal.uWrite(v.Local.iUB)!Cost.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!Cost)
+						V.uGlobal.uWrite(v.Local.iUB)!SC.Set(V.uGlobal.[V.Args.UDT](V.Local.iRet)!SC)
+						V.uGlobal.uWrite(v.Local.iUB)!Trmnl.Set(V.Caller.Terminal)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Next(V.Local.ic)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.ib)
+	F.Intrinsic.Control.Next(V.Local.ia)
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("WriteUDT_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.WriteUDT.End
+
+Program.Sub.WriteRST.Start
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.dDate.Declare(Date)
+V.Local.dStart.Declare(Date)
+V.Local.dStop.Declare(Date)
+
+F.Intrinsic.Control.SetErrorHandler("Error_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.String.Concat("Delete ATG_SALES_CUST_PL_SP where TRMNL = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+F.Intrinsic.String.Concat("Select * from ATG_SALES_CUST_PL_SP where TRMNL = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSql)
+V.Local.dStart.Set(V.Screen.fSales!dtpStart.Value)
+V.Local.dStop.Set(V.Screen.fSales!dtpStop.Value)
+F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uWrite.LBound,V.uGlobal.uWrite.UBound,1)
+	F.Intrinsic.Control.If(V.uGlobal.uWrite(V.Local.i)!Invoice,<>,"")
+		F.ODBC.con!rst.AddNew
+		F.ODBC.con!rst.Set!TRMNL(V.Caller.Terminal)
+		F.ODBC.con!rst.Set!PERIOD(V.uGlobal.uWrite(V.Local.i)!Period)
+		F.ODBC.con!rst.Set!INVOICE_NO(V.uGlobal.uWrite(V.Local.i)!Invoice)
+		F.ODBC.con!rst.Set!ORDER_NO(V.uGlobal.uWrite(V.Local.i)!Order)
+		F.ODBC.con!rst.Set!SUFFIX(V.uGlobal.uWrite(V.Local.i)!Suffix)
+		F.ODBC.con!rst.Set!LINE(V.uGlobal.uWrite(V.Local.i)!Line)
+		F.ODBC.con!rst.Set!CUSTOMER(V.uGlobal.uWrite(V.Local.i)!Cust)
+		F.ODBC.con!rst.Set!CUST_NAME(V.uGlobal.uWrite(V.Local.i)!CustName)
+		V.Local.dDate.Set(V.uGlobal.uWrite(v.Local.i)!InvDate)
+		F.ODBC.con!rst.Set!INVOICE_DATE(V.Local.dDate.PervasiveDate)
+		F.ODBC.con!rst.Set!SALESPERSON(V.uGlobal.uWrite(V.Local.i)!SP)
+		F.ODBC.con!rst.Set!PART(V.uGlobal.uWrite(V.Local.i)!Part)
+		F.ODBC.con!rst.Set!DESCRIPTION(V.uGlobal.uWrite(V.Local.i)!Desc)
+		F.ODBC.con!rst.Set!PRODUCT_LINE(V.uGlobal.uWrite(V.Local.i)!PL)
+		F.ODBC.con!rst.Set!SORT_CODE(V.uGlobal.uWrite(V.Local.i)!SC)
+		F.ODBC.con!rst.Set!EXTENSION(V.uGlobal.uWrite(V.Local.i)!Ext)
+		F.ODBC.con!rst.Set!COST(V.uGlobal.uWrite(V.Local.i)!Cost)
+		F.ODBC.con!rst.Set!START_DATE(V.Local.dStart.PervasiveDate)
+		F.ODBC.con!rst.Set!STOP_DATE(V.Local.dStop.PervasiveDate)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.i)
+F.ODBC.con!rst.Close
+F.Intrinsic.Control.CallSub(Callbi)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Error_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.WriteRST.End
+
+Program.Sub.CallBI.Start
+V.Local.sError.Declare(String)
+V.Local.iBI.Declare(Long)
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+F.Intrinsic.Control.If(V.Screen.fSales!chkDetail.Value,=,0)
+	F.Global.BI.GetIDFromName("ATG_3432_BI_Sales_Cust_PL_SP_SC.rpt",V.Local.iBI)
+F.Intrinsic.Control.Else
+	F.Global.BI.GetIDFromName("ATG_3432_BI_Sales_Cust_PL_SP_SC_Detail.rpt",V.Local.iBI)
+F.Intrinsic.Control.EndIf
+V.Local.sParam.Set("TRMNL")
+V.Local.sParamVal.Set(V.Caller.Terminal)
+F.Global.BI.PrintReport(V.Local.iBI,0,V.Local.sParam,V.Local.sParamVal,"",False)
+F.Intrinsic.Control.CallSub(Fsales_unload)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CallBI.End
+
+
